@@ -6,7 +6,7 @@
         xmlns:svc="clr-namespace:IncidentTracker.Services"
         xmlns:conv="clr-namespace:IncidentTracker.Converters"
         Title="Incident Tracker"
-        Icon="pack://application:,,,/icon.ico"
+        Icon="pack://application:,,,/ICO.png"
         MinWidth="900" MinHeight="600"
         Width="1200" Height="780"
         WindowStartupLocation="CenterScreen"

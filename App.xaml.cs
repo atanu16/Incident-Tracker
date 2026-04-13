@@ -11,7 +11,10 @@ namespace IncidentTracker
         {
             base.OnStartup(e);
 
-            const string excelPath = @"C:\Projects\Incident Tracker\XYZ.xlsx";
+            string exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName 
+                             ?? AppDomain.CurrentDomain.BaseDirectory;
+            string dir = System.IO.Path.GetDirectoryName(exePath) ?? AppDomain.CurrentDomain.BaseDirectory;
+            string excelPath = System.IO.Path.Combine(dir, "XYZ.xlsx");
             ExcelService = new ExcelService(excelPath);
         }
     }

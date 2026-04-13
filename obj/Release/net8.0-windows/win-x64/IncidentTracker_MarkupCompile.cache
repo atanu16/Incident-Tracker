@@ -1,0 +1,20 @@
+﻿IncidentTracker
+
+
+winexe
+C#
+.cs
+C:\Projects\Incident Tracker\obj\Release\net8.0-windows\win-x64\
+IncidentTracker
+none
+false
+TRACE;RELEASE;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\Projects\Incident Tracker\App.xaml
+9-310566721
+
+22-1245893907
+2041508614279
+Controls\NotificationControl.xaml;MainWindow.xaml;Themes\DarkTheme.xaml;Themes\LightTheme.xaml;Themes\Styles.xaml;Views\AddRecordWindow.xaml;Views\AllRecordsView.xaml;Views\DashboardView.xaml;Views\EditView.xaml;
+
+False
+

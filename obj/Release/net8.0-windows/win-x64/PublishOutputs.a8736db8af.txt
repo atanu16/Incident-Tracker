@@ -1,0 +1,2 @@
+C:\Projects\Incident Tracker\publish\IncidentTracker.pdb
+C:\Projects\Incident Tracker\publish\IncidentTracker.exe
