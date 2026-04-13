@@ -41,3 +41,4 @@ C:\Projects\Incident Tracker\obj\Debug\net8.0-windows\refint\IncidentTracker.dll
 C:\Projects\Incident Tracker\obj\Debug\net8.0-windows\IncidentTracker.pdb
 C:\Projects\Incident Tracker\obj\Debug\net8.0-windows\IncidentTracker.genruntimeconfig.cache
 C:\Projects\Incident Tracker\obj\Debug\net8.0-windows\ref\IncidentTracker.dll
+C:\Projects\Incident Tracker\obj\Debug\net8.0-windows\Themes\Styles.baml

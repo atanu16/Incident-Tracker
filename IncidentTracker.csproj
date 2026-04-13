@@ -5,6 +5,7 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>IncidentTracker</AssemblyName>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
     <RootNamespace>IncidentTracker</RootNamespace>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -13,6 +14,10 @@
 
   <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.102.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icon.ico"/>
   </ItemGroup>
 
 </Project>

@@ -37,5 +37,13 @@
     <SolidColorBrush x:Key="BadgeInProgressBgBrush"   Color="#6C63FF"/>
     <SolidColorBrush x:Key="BadgeCompletedBgBrush"    Color="#00C875"/>
     <SolidColorBrush x:Key="SeparatorBrush"           Color="#2A2A4A"/>
+    <!-- Title bar gradient brushes -->
+    <Color x:Key="TitleBarGradStart"                    >#1A1035</Color>
+    <Color x:Key="TitleBarGradMid"                      >#0D0D1A</Color>
+    <Color x:Key="TitleBarGradEnd"                      >#13132A</Color>
+    <!-- Compact action button brushes -->
+    <SolidColorBrush x:Key="CompactBtnBorderBrush"      Color="#2A2A4A"/>
+    <SolidColorBrush x:Key="CompactBtnHoverBgBrush"     Color="#1A1A35"/>
+    <SolidColorBrush x:Key="CompactBtnHoverBorderBrush" Color="#6C63FF"/>
 
 </ResourceDictionary>

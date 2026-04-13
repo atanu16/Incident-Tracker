@@ -68,7 +68,7 @@ namespace IncidentTracker.ViewModels
             try
             {
                 await DashboardVM.LoadDataAsync();
-                NotificationService.Instance.Show("Welcome", "Incident Tracker is ready.", NotificationType.Info, 3000);
+                NotificationService.Instance.Show("Welcome", "Developed by Atanu Bera ❤️", NotificationType.Info, 3000);
             }
             finally { IsLoading = false; }
         }

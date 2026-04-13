@@ -11,7 +11,7 @@ namespace IncidentTracker.Services
 
             var dicts = app.Resources.MergedDictionaries;
             var toRemove = dicts
-                .Where(d => d.Source?.OriginalString?.Contains("Theme") == true)
+                .Where(d => d.Source?.OriginalString?.Contains("Theme.xaml") == true)
                 .ToList();
             foreach (var d in toRemove) dicts.Remove(d);
 
