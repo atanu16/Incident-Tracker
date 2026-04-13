@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/atanu16/Incident-Tracker/main/icon.ico" alt="Incident Tracker Logo" width="100"/>
+  <img src="https://raw.githubusercontent.com/atanu16/Incident-Tracker/main/ICO.png" alt="Incident Tracker Logo" width="100"/>
   <h1>Incident Tracker 🎯</h1>
   <p>A lightning-fast, premium desktop application for tracking, managing, and resolving incidents — backed locally by Excel.</p>
 
@@ -70,7 +70,14 @@
    ```bash
    dotnet run
    ```
-   > **Note:** The application expects a valid `XYZ.xlsx` file in the root execution directory. If one isn't found, it will safely handle it depending on setup.
+
+4. **Publish the application in exe**
+   ```bash
+   dotnet publish IncidentTracker.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o ./publish
+   ```
+   The exe will be located at `Root\publish\IncidentTracker.exe`
+
+   > **Note:** The application expects a valid `XYZ.xlsx` file in the root execution directory. If one isn't found, it will safely handle it depending on setup. 
 
 ---
 
