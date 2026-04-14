@@ -76,7 +76,7 @@ namespace IncidentTracker.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/IncidentTracker;V1.0.0.0;component/views/addrecordwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/IncidentTracker;component/views/addrecordwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\AddRecordWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -97,20 +97,29 @@ namespace IncidentTracker.Services
             {
                 await Task.Run(() =>
                 {
-                    if (!File.Exists(_filePath)) return;
+                    if (!File.Exists(_filePath)) CreateNewFile();
 
                     using var wb = new XLWorkbook(_filePath);
                     var ws = wb.Worksheet(1);
 
+                    // Clear all existing data rows
+                    var lastRow = ws.LastRowUsed()?.RowNumber() ?? 1;
+                    if (lastRow > 1)
+                        ws.Rows(2, lastRow).Delete();
+
+                    // Rewrite all records in order
+                    int row = 2;
                     foreach (var record in records)
                     {
-                        if (record.RowIndex < 2) continue;
-                        ws.Cell(record.RowIndex, 1).Value = record.Date.ToString("yyyy-MM-dd");
-                        ws.Cell(record.RowIndex, 2).Value = record.CreatedBy;
-                        ws.Cell(record.RowIndex, 3).Value = record.SubjectLine;
-                        ws.Cell(record.RowIndex, 4).Value = record.Incident;
-                        ws.Cell(record.RowIndex, 5).Value = record.Status;
-                        ws.Cell(record.RowIndex, 6).Value = record.ShortDescription;
+                        ws.Cell(row, 1).Value = record.Date.ToString("yyyy-MM-dd");
+                        ws.Cell(row, 2).Value = record.CreatedBy;
+                        ws.Cell(row, 3).Value = record.SubjectLine;
+                        ws.Cell(row, 4).Value = record.Incident;
+                        ws.Cell(row, 5).Value = record.Status;
+                        ws.Cell(row, 6).Value = record.ShortDescription;
+                        StyleDataRow(ws, row);
+                        record.RowIndex = row;
+                        row++;
                     }
                     wb.Save();
                 });

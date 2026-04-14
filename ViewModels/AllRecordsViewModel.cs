@@ -12,7 +12,7 @@ namespace IncidentTracker.ViewModels
         private readonly Action<bool> _setLoading;
         private string _searchText = "";
         private bool _isLoading;
-        private bool _sortAscending = true;
+        private bool _sortAscending = false;
         private ObservableCollection<IncidentRecord> _displayedRecords = new();
         private List<IncidentRecord> _allRecords = new();
         private int _totalCount;
@@ -93,8 +93,8 @@ namespace IncidentTracker.ViewModels
                     r.Status.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
 
             filtered = SortAscending
-                ? filtered.OrderBy(r => r.Date)
-                : filtered.OrderByDescending(r => r.Date);
+                ? filtered.OrderBy(r => r.Date).ThenBy(r => r.RowIndex)
+                : filtered.OrderByDescending(r => r.Date).ThenByDescending(r => r.RowIndex);
 
             DisplayedRecords = new ObservableCollection<IncidentRecord>(filtered);
         }

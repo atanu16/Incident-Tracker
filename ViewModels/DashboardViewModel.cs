@@ -80,7 +80,7 @@ namespace IncidentTracker.ViewModels
                     r.ShortDescription.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
                     r.CreatedBy.Contains(SearchText, StringComparison.OrdinalIgnoreCase)).ToList();
 
-            DisplayedRecords = new ObservableCollection<IncidentRecord>(filtered);
+            DisplayedRecords = new ObservableCollection<IncidentRecord>(filtered.OrderByDescending(r => r.RowIndex));
         }
     }
 }

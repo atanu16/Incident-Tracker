@@ -1,5 +1,5 @@
 ﻿IncidentTracker
-1.0.0.0
+
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR
 C:\Projects\Incident Tracker\App.xaml
 9-310566721
 
-24-1838377418
+22-1347110422
 2041508614279
 Controls\NotificationControl.xaml;MainWindow.xaml;Themes\DarkTheme.xaml;Themes\LightTheme.xaml;Themes\Styles.xaml;Views\AddRecordWindow.xaml;Views\AllRecordsView.xaml;Views\DashboardView.xaml;Views\EditView.xaml;
 
-True
+False
 

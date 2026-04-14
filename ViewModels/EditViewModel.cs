@@ -11,12 +11,20 @@ namespace IncidentTracker.ViewModels
         private readonly IExcelService _excelService;
         private readonly Action<bool> _setLoading;
         private bool _isLoading;
+        private string _searchText = "";
+        private List<IncidentRecord> _allRecords = new();
         private ObservableCollection<IncidentRecord> _records = new();
 
         public ObservableCollection<IncidentRecord> Records
         {
             get => _records;
             set => SetField(ref _records, value);
+        }
+
+        public string SearchText
+        {
+            get => _searchText;
+            set { SetField(ref _searchText, value); ApplyFilter(); }
         }
 
         public bool IsLoading
@@ -29,6 +37,8 @@ namespace IncidentTracker.ViewModels
 
         public ICommand SaveCommand { get; }
         public ICommand RefreshCommand { get; }
+        public ICommand ClearSearchCommand { get; }
+        public ICommand DeleteRecordCommand { get; }
 
         public EditViewModel(IExcelService excelService, Action<bool> setLoading)
         {
@@ -36,6 +46,15 @@ namespace IncidentTracker.ViewModels
             _setLoading = setLoading;
             SaveCommand = new AsyncRelayCommand(SaveAsync);
             RefreshCommand = new AsyncRelayCommand(LoadDataAsync);
+            ClearSearchCommand = new RelayCommand(() => SearchText = "");
+            DeleteRecordCommand = new RelayCommand(param =>
+            {
+                if (param is IncidentRecord record)
+                {
+                    _allRecords.Remove(record);
+                    Records.Remove(record);
+                }
+            });
         }
 
         public async Task LoadDataAsync()
@@ -43,8 +62,8 @@ namespace IncidentTracker.ViewModels
             IsLoading = true;
             try
             {
-                var records = await _excelService.LoadRecordsAsync();
-                Records = new ObservableCollection<IncidentRecord>(records);
+                _allRecords = await _excelService.LoadRecordsAsync();
+                ApplyFilter();
             }
             catch (Exception ex)
             {
@@ -53,12 +72,27 @@ namespace IncidentTracker.ViewModels
             finally { IsLoading = false; }
         }
 
+        private void ApplyFilter()
+        {
+            IEnumerable<IncidentRecord> filtered = _allRecords;
+
+            if (!string.IsNullOrWhiteSpace(SearchText))
+                filtered = filtered.Where(r =>
+                    r.SubjectLine.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
+                    r.Incident.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
+                    r.ShortDescription.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
+                    r.CreatedBy.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
+                    r.Status.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
+
+            Records = new ObservableCollection<IncidentRecord>(filtered.OrderByDescending(r => r.RowIndex));
+        }
+
         private async Task SaveAsync()
         {
             IsLoading = true;
             try
             {
-                await _excelService.UpdateRecordsAsync(Records);
+                await _excelService.UpdateRecordsAsync(_allRecords);
                 NotificationService.Instance.Show("Success", "All records saved successfully.", NotificationType.Success);
             }
             catch (Exception ex)
