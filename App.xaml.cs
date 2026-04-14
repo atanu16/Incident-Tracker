@@ -11,10 +11,8 @@ namespace IncidentTracker
         {
             base.OnStartup(e);
 
-            string exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName 
-                             ?? AppDomain.CurrentDomain.BaseDirectory;
-            string dir = System.IO.Path.GetDirectoryName(exePath) ?? AppDomain.CurrentDomain.BaseDirectory;
-            string excelPath = System.IO.Path.Combine(dir, "XYZ.xlsx");
+            // Use the absolute target path as the unified local database
+            string excelPath = @"C:\Projects\Incident Tracker\XYZ.xlsx";
             ExcelService = new ExcelService(excelPath);
         }
     }

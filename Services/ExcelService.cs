@@ -32,7 +32,8 @@ namespace IncidentTracker.Services
                         return records;
                     }
 
-                    using var wb = new XLWorkbook(_filePath);
+                    using var fs = new FileStream(_filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                    using var wb = new XLWorkbook(fs);
                     var ws = wb.Worksheet(1);
                     var lastRow = ws.LastRowUsed()?.RowNumber() ?? 1;
 
@@ -75,7 +76,7 @@ namespace IncidentTracker.Services
                     var ws = wb.Worksheet(1);
                     int newRow = (ws.LastRowUsed()?.RowNumber() ?? 1) + 1;
 
-                    ws.Cell(newRow, 1).Value = record.Date.ToString("yyyy-MM-dd HH:mm");
+                    ws.Cell(newRow, 1).Value = record.Date.ToString("yyyy-MM-dd");
                     ws.Cell(newRow, 2).Value = record.CreatedBy;
                     ws.Cell(newRow, 3).Value = record.SubjectLine;
                     ws.Cell(newRow, 4).Value = record.Incident;
@@ -104,7 +105,7 @@ namespace IncidentTracker.Services
                     foreach (var record in records)
                     {
                         if (record.RowIndex < 2) continue;
-                        ws.Cell(record.RowIndex, 1).Value = record.Date.ToString("yyyy-MM-dd HH:mm");
+                        ws.Cell(record.RowIndex, 1).Value = record.Date.ToString("yyyy-MM-dd");
                         ws.Cell(record.RowIndex, 2).Value = record.CreatedBy;
                         ws.Cell(record.RowIndex, 3).Value = record.SubjectLine;
                         ws.Cell(record.RowIndex, 4).Value = record.Incident;

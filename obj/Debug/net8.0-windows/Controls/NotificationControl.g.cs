@@ -84,7 +84,7 @@ namespace IncidentTracker.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/IncidentTracker;component/controls/notificationcontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/IncidentTracker;V1.0.0.0;component/controls/notificationcontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\NotificationControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
